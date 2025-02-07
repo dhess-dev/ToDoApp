@@ -12,7 +12,7 @@
         </MudText>
 
         <!-- Task List -->
-        <MudPaper Width="100%" Elevation="3" Class="p-4 rounded">
+        <MudPaper Width="100%" Elevation="3" Class="pa-4 rounded">
             <MudList T="string">
                 @foreach (var task in _tasks)
                 {
@@ -25,7 +25,7 @@
         </MudPaper>
 
         <!-- Add New Task -->
-        <MudPaper Class="rounded p-4 mt-4" Elevation="4">
+        <MudPaper Class="rounded pa-4 mt-4" Elevation="4">
             <MudText Typo="Typo.h6" Class="text-center">➕ Add New Task</MudText>
             <MudTextField @bind-Value="_newTask.Title" Label="Task Title" Variant="Variant.Outlined" Required="true"
                           Class="w-100"/>
