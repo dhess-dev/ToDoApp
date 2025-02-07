@@ -1,30 +1,40 @@
 @page "/add-task-form"
 @using ToDoApp.Components.Models
 
-<MudPaper Class="p-4" Elevation="4">
-    <MudText Typo="Typo.h6">Add New Task</MudText>
-    <MudTextField @bind-Value="_newTask.Title" Label="Title" Variant="Variant.Outlined" Required="true"/>
-    <MudTextField @bind-Value="_newTask.Description" Label="Description" Variant="Variant.Outlined" Lines="3"/>
-    <MudDatePicker @bind-Date="_newTask.DueDate" Label="Due Date"/>
 
-    <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="AddTask" Class="mt-2">
-        Add Task
-    </MudButton>
-</MudPaper>
 
-<MudList T="TaskItem" Class="mt-4">
-    @foreach (var task in _tasks)
-    {
-        <MudListItem T="TaskItem">
-            <MudCheckBox T="bool" bind-Value="@task.IsCompleted"/>
-            <MudText Typo="Typo.subtitle1">
-                @task.Title
-            </MudText>
-            <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => DeleteTask(task)"/>
-        </MudListItem>
-    }
-</MudList>
 
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="8" md="6" lg="4">
+        <!-- Title -->
+        <MudText Typo="Typo.h4" GutterBottom="true" Class="text-center">
+            📝 To-Do List
+        </MudText>
+
+        <!-- Task List -->
+        <MudPaper Width="100%" Elevation="3" Class="p-4 rounded">
+            <MudList T="string">
+                @foreach (var task in _tasks)
+                {
+                    <MudListItem Icon="@Icons.Material.Filled.Bookmark">
+                        @task.Title
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => DeleteTask(task)"/>
+                    </MudListItem>
+                }
+            </MudList>
+        </MudPaper>
+
+        <!-- Add New Task -->
+        <MudPaper Class="rounded p-4 mt-4" Elevation="4">
+            <MudText Typo="Typo.h6" Class="text-center">➕ Add New Task</MudText>
+            <MudTextField @bind-Value="_newTask.Title" Label="Task Title" Variant="Variant.Outlined" Required="true"
+                          Class="w-100"/>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="AddTask" Class="mt-3 w-100">
+                Add Task
+            </MudButton>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
 
 
 @code {
