@@ -51,7 +51,4 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-// ✅ Map Identity Razor Pages (Login, Register, etc.)
-app.MapRazorPages();
-
 app.Run();
