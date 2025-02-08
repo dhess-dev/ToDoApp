@@ -1,9 +1,14 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ToDoApp.Components.Models;
 
 public class TaskItem
 {
+    [Key]
     public Guid Id { get; set; } = Guid.NewGuid();
-    public Guid UserId { get; set; }
+    [ForeignKey("IdentityUser")]
+    public string UserId { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public bool IsCompleted { get; set; }
