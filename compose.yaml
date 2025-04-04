@@ -1,0 +1,8 @@
+﻿services:
+  todoapp:
+    image: todoapp
+    build:
+      context: .
+      dockerfile: src/ToDoApp/Dockerfile
+    ports:
+      - "8080:8080"
