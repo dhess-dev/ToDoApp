@@ -1,8 +1,8 @@
 ﻿services:
   todoapp:
-    image: todoapp
-    build:
-      context: .
-      dockerfile: src/ToDoApp/Dockerfile
+    image: ghcr.io/dhess-dev/todoapp:latest
     ports:
       - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
